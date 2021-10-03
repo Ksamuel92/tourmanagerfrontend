@@ -1,4 +1,5 @@
 class Show {
+  static all = [];
 constructor({advanced, email, gurantee, id, loadin, merch, promoter, user, venue}){
   this.advanced = advanced
   this.email = email
@@ -12,7 +13,8 @@ constructor({advanced, email, gurantee, id, loadin, merch, promoter, user, venue
   this.element = document.createElement('div')
   this.element.dataset['id'] = id
   this.element.id = `show-${this.id}`
-  debugger
+  Show.all.push(this)
+  // debugger
 }
 
 
