@@ -1,3 +1,3 @@
 class Show {
-  constructor()
+  constructor({})
 }
