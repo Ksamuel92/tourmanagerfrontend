@@ -9,6 +9,12 @@ constructor({advanced, email, gurantee, id, loadin, merch, promoter, user, venue
   this.promoter = promoter
   this.user = user
   this.venue = venue
+  this.element = document.createElement('div')
+  this.element.dataset['id'] = id
+  this.element.id = `show-${this.id}`
+  debugger
 }
+
+
 
 }
