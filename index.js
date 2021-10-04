@@ -1,4 +1,5 @@
 const port = 'http://localhost:3000';
+const userLoginForm = document.querySelector('#login-form')
 const showCall = new ShowService(port);
 const showContainer = document.querySelector('#show-container');
 const showGross = document.querySelector('#shows-gross');
@@ -14,7 +15,13 @@ const advancedValue = document.querySelector('#show-advanced')
 
 
 showCall.getShows()
+userLoginForm.addEventListener('submit', handleUserLogin);
 newShowForm.addEventListener('submit', handleSubmit);
+
+function handleUserLogin(e) {
+  e.preventDefault();
+}
+
 
 function handleSubmit(e) {
   e.preventDefault()
