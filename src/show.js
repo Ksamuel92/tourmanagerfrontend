@@ -29,7 +29,7 @@ render() {
   <ul id= "show-${this.id}-gross">
     <li>Merch Total: ${this.merch}</li>
     <li>Show Guarantee: $${this.guarantee}</li>
-    <li>Total: $${this.merch + this.guarantee}</li>
+    <li class="show-totals">Total: $${this.merch + this.guarantee}</li>
   </ul>
   </ul>
   <p>This show belongs to ${this.user.email}. </p>
@@ -39,6 +39,11 @@ render() {
 
 attachToDom() {
   showContainer.appendChild(this.element)
+}
+
+static getGross() {
+  const showTotalsArray = Array.from(document.querySelectorAll('.show-totals'))
+ return showTotalsArray.map(show => Number(show.innerText.split(" ")[1].replace(/[^0-9.-]+/g,""))).reduce((previousTotal, currentTotal) => previousTotal + currentTotal)
 }
 
 
