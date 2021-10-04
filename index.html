@@ -10,6 +10,7 @@
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
+
   <h1>TourManager</h1>
   <div id="login">
     <form id = "login-form">
@@ -19,7 +20,57 @@
     </form>
   </div>
   <div id= "show-container">
-    
+  </div>
+  <div id= "shows-info">
+    <span id="shows-gross"></span>
+  </div>
+  <div id="new-show">
+    <form id= "new-show-form">
+      <h3>New Show</h3>
+      <label for= "venue">Venue:</label>
+      <input type="text" id="venue">
+      <label for="city">City:</label>
+      <input type="text" id="city" placeholder="City, State">
+      <label for="promoter">Promoter:</label>
+      <input type="text" id="promoter">
+      <label for="email">Promoter's Email:</label>
+      <input type="text" pattern= "^\S+@\S$">
+      <label for="loadin">Load In Time and Date:</label>
+      <input type="datetime-local" id="loadin" placeholder="">
+      <label for="advanced">Advanced?</label>
+      <input type="checkbox" id="advanced">
+      <label for="merch">Merch Total:</label>
+      <input type="number" id="merch">
+      <label for="guarantee">Show Guarantee:</label>
+      <input type="number" id="guarantee">
+      <input type="submit" value = "Create Show">
+  </form>
   </div>
   </body>
 </html>
+<!-- Emo's - Austin, TX
+Promoter: Dude Bro - dudebro@NBT.com
+Load In Time: Fri Dec 31 1999 22:30:00 GMT-0500 (Eastern Standard Time)
+Show Advanced: true
+Merch Total: $2000
+Show Guarantee: $1200
+Total: $3200
+This show belongs to example.com. -->
+<!-- constructor({advanced, email, guarantee, id, loadin, merch, promoter, user, venue, city}){
+  this.advanced = advanced //
+  this.email = email //
+  this.guarantee = guarantee //
+  this.id = id //
+  this.loadin = loadin //
+  this.merch = merch
+  this.promoter = promoter //
+  this.user = user
+  this.venue = venue //
+  this.city = city //
+  this.element = document.createElement('div')
+  this.element.dataset['id'] = id
+  this.element.className = "show-card"
+  this.element.id = `show-${this.id}`
+  Show.all.push(this) 
+  // debugger
+} -->
