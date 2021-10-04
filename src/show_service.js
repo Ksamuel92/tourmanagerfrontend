@@ -3,9 +3,15 @@ class ShowService {
     this.port = port
   }
 
-  async getShows() {
-    const shows = await fetch(`${this.port}/shows`)
+   getShows() {
+    fetch(`${this.port}/shows`)
     .then(shows => shows.json())
-    .then(json => console.log(json))
+    .then(data => {
+      for(let show of data){
+        let s = new Show(show)
+        s.render()
+        s.attachToDom()
+      } 
+    })
   }
 }
