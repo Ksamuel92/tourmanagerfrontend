@@ -25,7 +25,7 @@ render() {
   <ul>
   <li>Promoter: ${this.promoter} - ${this.email}</li>
   <li>Load In Time: ${new Date(this.loadin)}</li>
-  <li>Show Advanced: ${this.advanced}</li>
+  <li>Show Advanced: ${this.advanced ? 'yes' : 'no'}</li>
   <ul id= "show-${this.id}-gross">
     <li>Merch Total: $${this.merch}</li>
     <li>Show Guarantee: $${this.guarantee}</li>
