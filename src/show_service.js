@@ -11,7 +11,32 @@ class ShowService {
         let s = new Show(show)
         s.render()
         s.attachToDom()
-      } 
+      }
+      Show.getGross() 
     })
+  }
+
+  createShow() {
+    const showInfo = {
+      show: {
+        advanced: advancedValue.value,
+        email: emailValue.value,
+        guarantee: guaranteeValue.value,
+        loadin: loadinValue.value,
+        merch: merchValue.value,
+        promoter: promoterValue.value,
+        venue: venueValue.value,
+        city: cityValue.value
+      }
+    }
+    const configObj = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json'
+      },
+      body: JSON.stringify(showInfo)
+    }
+    fetch(`${this.port}/shows`, configObj)
   }
 }
