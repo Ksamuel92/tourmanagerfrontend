@@ -25,6 +25,8 @@ class UserService {
         let u = new User(user)
         u.render()
         u.attachToDom()
+        loggedInUserEmail = u.email
+        // debugger
         userLoginForm.classList.add('hidden');
       });
   }
