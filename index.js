@@ -25,5 +25,6 @@ function handleUserLogin(e) {
 
 function handleSubmit(e) {
   e.preventDefault()
+  showCall.createShow();
 }
 
