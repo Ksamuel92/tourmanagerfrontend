@@ -27,6 +27,9 @@ class ShowService {
         promoter: promoterValue.value,
         venue: venueValue.value,
         city: cityValue.value
+      },
+      user: {
+        email: loggedInUserEmail,
       }
     }
     const configObj = {
