@@ -21,7 +21,12 @@ class UserService {
 
     fetch(`${this.port}/users`, configObj)
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(user =>{ 
+        let u = new User(user)
+        u.render()
+        u.attachToDom()
+        userLoginForm.classList.add('hidden');
+      });
   }
   
 }
