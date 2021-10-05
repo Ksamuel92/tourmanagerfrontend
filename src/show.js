@@ -44,7 +44,7 @@ attachToDom() {
 static getGross() {
   const showTotalsArray = Array.from(document.querySelectorAll('.show-totals'))
  const totalGross = showTotalsArray.map(show => Number(show.innerText.split(" ")[1].replace(/[^0-9.-]+/g,""))).reduce((previousTotal, currentTotal) => previousTotal + currentTotal)
- debugger
+//  debugger
  return showGross.innerText = `Total Gross: $${totalGross}`
 }
 

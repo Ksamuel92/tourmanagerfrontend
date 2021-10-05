@@ -20,6 +20,6 @@ class User {
   }
 
   attachToDom() {
-    document.body.appendChild(this.element)
+    header.parentNode.insertBefore(this.element, header.nextSibling);
   }
 }
