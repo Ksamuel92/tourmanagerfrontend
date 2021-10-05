@@ -1,7 +1,7 @@
 const port = 'http://localhost:3000';
 const userLoginForm = document.querySelector('#login-form')
 const showCall = new ShowService(port);
-const userCall = new UserCall(port)
+const userCall = new UserService(port);
 const userNameValue = document.querySelector('#user-name')
 const userEmailValue = document.querySelector('#user-email')
 const showContainer = document.querySelector('#show-container');
@@ -23,6 +23,7 @@ newShowForm.addEventListener('submit', handleSubmit);
 
 function handleUserLogin(e) {
   e.preventDefault();
+  userCall.createUser();
 }
 
 
