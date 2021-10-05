@@ -37,6 +37,10 @@ class ShowService {
       },
       body: JSON.stringify(showInfo)
     }
+
     fetch(`${this.port}/shows`, configObj)
+    .then(response => response.json())
+    .then(data => console.log(data));
+    
   }
 }
