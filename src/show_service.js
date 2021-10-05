@@ -43,7 +43,12 @@ class ShowService {
 
     fetch(`${this.port}/shows`, configObj)
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(show => {
+      let s = new Show(show);
+      s.render();
+      s.attachToDom();
+      Show.getGross();
+    } );
     
   }
 }
