@@ -36,8 +36,8 @@ render() {
     <li class="show-totals">Total: $${this.merch + this.guarantee}</li>
   </ul>
   </div>
-  <button type="button" class="edit-btn" data-id:"${this.id}">Edit</button>
-  <button type="button" class="delete-btn" data-id:"${this.id}">Delete</button>
+  <button type="button" class="edit-btn" data-id ="${this.id}">Edit</button>
+  <button type="button" class="delete-btn" data-id ="${this.id}">Delete</button>
   `
   return this.element
 }
@@ -48,6 +48,7 @@ handleClick = e => {
     this.renderEditForm();
   } else if (e.target.innerText === 'Save'){
     e.target.innerText = 'Edit'
+    this.updateShowInfo(e.target)
     showCall.updateShow(e.target);
   }
   else if (e.target.innerText === 'Delete'){
@@ -70,7 +71,7 @@ let advanced = div.children[2].children[1].innerText.split('Show Advanced: ')[1]
 // debugger
 div.innerHTML = `
 <div class=edit-show-card>
-<form id= "edit-show-form">
+<form data-set:"${this.id}"id= "edit-show-form">
 <h3>Edit Show</h3>
 <label for= "venue">Venue:</label>
 <input type="text" title="venue" id="edit-venue" value= "${venue}">
@@ -94,6 +95,32 @@ div.innerHTML = `
 </div>`
 
 return this.element
+}
+
+updateShowInfo(editBtn) {
+  const div = editBtn.previousElementSibling
+  // debugger
+  const editVenueValue = div.querySelector('#edit-venue')
+  const editCityValue = div.querySelector('#edit-city')
+  const editPromoterValue = div.querySelector('#edit-promoter')
+  const editEmailValue = div.querySelector('#edit-email')
+  const editDateValue = div.querySelector('#edit-date')
+  const editLoadInValue = div.querySelector('#edit-loadin')
+  const editAdvancedValue = div.querySelector('#edit-advanced')
+  const editMerchValue = div.querySelector('#edit-merch')
+  const editGuaranteeValue = div.querySelector('#edit-guarantee')
+
+  this.advanced = editAdvancedValue.value
+  this.email = editEmailValue.value
+  this.date = editDateValue.value 
+  this.guarantee = editGuaranteeValue.value //
+  this.loadin = editLoadInValue.value
+  this.merch = editMerchValue.value
+  this.promoter = editPromoterValue.value //
+  this.venue = editVenueValue.value
+  this.city = editCityValue.value
+
+  
 }
 
 attachToDom() {
