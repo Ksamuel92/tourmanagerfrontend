@@ -52,4 +52,51 @@ class ShowService {
     } );
     
   }
+
+  updateShow(editBtn) {
+    debugger
+    const div = editBtn.previousElementSibling
+    const id = div.dataset.id
+    const editVenueValue = div.querySelector('#edit-venue')
+    const editCityValue = div.querySelector('#edit-city')
+    const editPromoterValue = div.querySelector('#edit-promoter')
+    const editEmailValue = div.querySelector('#edit-email')
+    const editDateValue = div.querySelector('#edit-date')
+    const editLoadInValue = div.querySelector('#edit-loadin')
+    const editAdvancedValue = div.querySelector('#edit-advanced')
+    const editMerchValue = div.querySelector('#edit-merch')
+    const editGuaranteeValue = div.querySelector('#edit-guarantee')
+
+    const editShowInfo = {
+      show: {
+        id: id,
+        advanced: editAdvancedValue.value,
+        email: editEmailValue.value,
+        guarantee: editGuaranteeValue.value,
+        loadin: editLoadInValue.value,
+        merch: editMerchValue.value,
+        promoter: editPromoterValue.value,
+        venue: editVenueValue.value,
+        city: editCityValue.value,
+        date: editDateValue.value
+      },
+      user: {
+        email: loggedInUserEmail,
+      }
+  }
+  const configObj = {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify(editShowInfo)
+  }
+}
+
+fetch(`${this.port}/shows/${id}`, configObj)
+.then(response => response.json())
+.then(show => {
+  let s = new Show(show)
+})
 }
