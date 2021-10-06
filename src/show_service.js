@@ -26,7 +26,8 @@ class ShowService {
         merch: merchValue.value,
         promoter: promoterValue.value,
         venue: venueValue.value,
-        city: cityValue.value
+        city: cityValue.value,
+        date: dateValue.value
       },
       user: {
         email: loggedInUserEmail,

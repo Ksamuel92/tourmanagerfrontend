@@ -1,8 +1,9 @@
 class Show {
   static all = [];
-constructor({advanced, email, guarantee, id, loadin, merch, promoter, user, venue, city}){
+constructor({advanced, date, email, guarantee, id, loadin, merch, promoter, user, venue, city}){
   this.advanced = advanced //
-  this.email = email //
+  this.email = email
+  this.date = date //
   this.guarantee = guarantee //
   this.id = id //
   this.loadin = loadin //
@@ -23,7 +24,7 @@ constructor({advanced, email, guarantee, id, loadin, merch, promoter, user, venu
 render() {
   this.element.innerHTML = `<div class="show-info">
   <h3>${this.venue} - ${this.city}</h3>
-  <h4> Load In Time: ${new Date(this.loadin)} </h4>
+  <h4> Load In Date and Time:${this.date} - ${Show.parseISOString(this.loadin)} </h4>
   <ul>
   <li>Promoter: ${this.promoter} - ${this.email}</li>
   <li>Show Advanced: ${this.advanced ? 'yes' : 'no'}</li>
@@ -57,9 +58,10 @@ let loadin = div.children[1].innerText.split('Load In Time: ')[1]
 let promoter = div.children[2].children[0].innerText.split('Promoter: ')[1].split(' - ')[0]
 let email = div.children[2].children[0].innerText.split('Promoter: ')[1].split(' - ')[1]
 let merch = div.children[3].children[0].innerText.split('Merch Total: $')[1]
+let date =
 let guarantee = div.children[3].children[1].innerText.split('Show Guarantee: $')[1]
 let advanced = div.children[2].children[1].innerText.split('Show Advanced: ')[1]
-// debugger
+debugger
 div.innerHTML = `
 <div class=edit-show-card>
 <form id= "edit-show-form">
@@ -73,7 +75,7 @@ div.innerHTML = `
 <label for="email">Promoter's Email:</label>
 <input type="text" title="email" id="show-email" pattern="^\S+@\S+$" value="${email}"></br>
 <label for="loadin">Load In Time and Date:</label>
-<input type="datetime-local" title="loadin" id="show-loadin" value="${loadin}"></br>
+<input type="datetime-local" title="loadin" id="show-loadin" value="${Date.parse(loadin)}"></br>
 <label for="advanced">Advanced?</label>
 <input type="checkbox" title="advanced" id="show-advanced" ${advanced === 'yes' ? 'checked' : 'unchecked'}></br>
 <label for="merch">Merch Total:</label>
@@ -96,6 +98,12 @@ static getGross() {
  const totalGross = showTotalsArray.map(show => Number(show.innerText.split(" ")[1].replace(/[^0-9.-]+/g,""))).reduce((previousTotal, currentTotal) => previousTotal + currentTotal)
 //  debugger
  return showGross.innerText = `Total Gross: $${totalGross}`
+}
+
+ static parseISOString(s) {
+  var b = s.split(/\D+/);
+  debugger
+  return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
 }
 
 
