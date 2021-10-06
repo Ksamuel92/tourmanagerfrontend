@@ -6,7 +6,7 @@ constructor({advanced, date, email, guarantee, id, loadin, merch, promoter, user
   this.date = date //
   this.guarantee = guarantee //
   this.id = id //
-  this.loadin = loadin //
+  this.loadin = new Date(loadin) //
   this.merch = merch
   this.promoter = promoter //
   this.user = user
@@ -25,7 +25,7 @@ render() {
   // debugger
   this.element.innerHTML = `<div class="show-info">
   <h3>${this.venue} - ${this.city}</h3>
-  <h4> Load In Date and Time: ${this.date} - ${Show.parseISOString(this.loadin)} </h4>
+  <h4> Load In Date and Time: ${this.date} - ${this.loadin.getUTCHours()}:${this.loadin.getUTCMinutes()} </h4>
   <ul>
   <li>Promoter: ${this.promoter} - ${this.email}</li>
   <li>Show Advanced: ${this.advanced ? 'yes' : 'no'}</li>
@@ -49,7 +49,6 @@ handleClick = e => {
   } else if (e.target.innerText === 'Save'){
     e.target.innerText = 'Edit'
     this.updateShowInfo(e.target)
-    showCall.updateShow(e.target);
   }
   else if (e.target.innerText === 'Delete'){
   } else if (e.target.innerText === 'Save Comment') {
@@ -100,27 +99,28 @@ return this.element
 updateShowInfo(editBtn) {
   const div = editBtn.previousElementSibling
   // debugger
+  
   const editVenueValue = div.querySelector('#edit-venue')
   const editCityValue = div.querySelector('#edit-city')
   const editPromoterValue = div.querySelector('#edit-promoter')
   const editEmailValue = div.querySelector('#edit-email')
   const editDateValue = div.querySelector('#edit-date')
   const editLoadInValue = div.querySelector('#edit-loadin')
+  const splitTime = editLoadInValue.value.split(':')
   const editAdvancedValue = div.querySelector('#edit-advanced')
   const editMerchValue = div.querySelector('#edit-merch')
   const editGuaranteeValue = div.querySelector('#edit-guarantee')
-
   this.advanced = editAdvancedValue.value
   this.email = editEmailValue.value
   this.date = editDateValue.value 
-  this.guarantee = editGuaranteeValue.value //
-  this.loadin = editLoadInValue.value
-  this.merch = editMerchValue.value
+  this.guarantee = Number(editGuaranteeValue.value) //
+  this.loadin = new Date (1,1,2000,(splitTime[0] - 5),splitTime[1])
+  this.merch = Number(editMerchValue.value)
   this.promoter = editPromoterValue.value //
   this.venue = editVenueValue.value
   this.city = editCityValue.value
 
-  
+  showCall.updateShow(this)
 }
 
 attachToDom() {
