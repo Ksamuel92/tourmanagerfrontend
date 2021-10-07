@@ -216,9 +216,9 @@ h4 {
 #show-container {
   width: 100%;
   margin: auto;
-  padding-top: 36em;
-  position: absolute;
-  top: 0em;
+  padding-top: 0em;
+  position: relative;
+  top: 5em;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -229,26 +229,27 @@ h4 {
   align-content: center;
 }
 
+#shows-gross {
+  display: block;
+    position: relative;
+    top: 3em;
+}
+
+
 #new-show-button{
   font-size: 2rem;
-  display: block;
-  margin: auto;
-  width: 15%;
-  background-color: rgb(76, 130, 174);
-  color: white;
-  padding: 14px 20px;
-  position: relative;
-  /* right: -29em; */
-  top: 5em;
-  text-align: center;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  /* flex-direction: column; */
-  /* flex-wrap: wrap; */
-  /* align-content: stretch; */
-  /* justify-content: space-around; */
-  /* align-items: center; */
+    display: block;
+    margin: auto;
+    width: 15%;
+    background-color: rgb(76, 130, 174);
+    color: white;
+    padding: 14px 20px;
+    position: relative;
+    top: -1em;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .edit-btn {
