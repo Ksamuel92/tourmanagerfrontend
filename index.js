@@ -6,11 +6,13 @@ const headerDiv = document.querySelector('#header-section')
 const showInfo = document.querySelector('#shows-info')
 const newShowButton = document.querySelector('#new-show-button')
 const newShowFormDiv = document.querySelector('#new-show')
+const newShowFormCloseButton = document.querySelector('#new-form-close')
 const showCall = new ShowService(port);
 const userCall = new UserService(port);
 let loggedInUserEmail = null;
 const userNameValue = document.querySelector('#user-name')
 const userEmailValue = document.querySelector('#user-email')
+const userCard = document.querySelector('.user-card')
 const showContainer = document.querySelector('#show-container');
 const showGross = document.querySelector('#shows-gross');
 const newShowForm = document.querySelector('#new-show-form')
@@ -29,12 +31,19 @@ const advancedValue = document.querySelector('#show-advanced')
 showCall.getShows()
 userLoginForm.addEventListener('submit', handleUserLogin);
 newShowForm.addEventListener('submit', handleSubmit);
+newShowFormCloseButton.addEventListener('click', handleShowClose);
+
+function handleShowClose(){
+  newShowForm.reset()
+  newShowFormDiv.classList.add('hidden')
+  document.body.classList.remove('overlay')
+}
 
 function handleSubmit(e) {
   e.preventDefault()
   showCall.createShow();
   newShowFormDiv.classList.add('hidden');
-  document.body.classList.remove('overlay')
+  document.body.classList.remove('overlay');
 }
 
 
