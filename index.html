@@ -12,8 +12,10 @@
     <link href="style.css" rel="stylesheet">
   </head>
   <body class = "overlay">
-
+<div id="header-section">
   <h1 id="header" class="hidden">TourManager</h1>
+
+</div>
   <div id="login" class ="modal">
     <form id = "login-form">
       <h2>TourManager</h2>
@@ -24,11 +26,13 @@
       <input type="submit" value="Login" />
     </form>
   </div>
+  <button type="button" id="new-show-button" value= "New Show">New Show</button>
   <div id= "show-container" class= "hidden">
+    <div id= "shows-info" class= "hidden">
+      <span id="shows-gross"></span><br><br>
+    </div>
   </div>
-  <div id= "shows-info" class= "hidden">
-    <span id="shows-gross"></span>
-  </div>
+ 
   <div id="new-show" class= "hidden">
     <form id= "new-show-form">
       <h3>New Show</h3>
