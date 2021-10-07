@@ -11,24 +11,25 @@
     <script defer src="index.js"></script>
     <link href="style.css" rel="stylesheet">
   </head>
-  <body>
+  <body class = "overlay">
 
-  <h1 id="header">TourManager</h1>
-  <div id="login">
+  <h1 id="header" class="hidden">TourManager</h1>
+  <div id="login" class ="modal">
     <form id = "login-form">
-      <label for="name">Name</label>
+      <h2>TourManager</h2>
+      <label for="name">Name:</label>
       <input type="text" id="user-name">
       <label for ="email">Email:</label>
-      <input type="email" id="user-email" placeholder="Enter your email address" />
+      <input type="email" id="user-email" />
       <input type="submit" value="Login" />
     </form>
   </div>
-  <div id= "show-container">
+  <div id= "show-container" class= "hidden">
   </div>
-  <div id= "shows-info">
+  <div id= "shows-info" class= "hidden">
     <span id="shows-gross"></span>
   </div>
-  <div id="new-show">
+  <div id="new-show" class= "hidden">
     <form id= "new-show-form">
       <h3>New Show</h3>
       <label for= "venue">Venue:</label>
