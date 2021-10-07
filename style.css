@@ -12,12 +12,17 @@ html {
 body {
   font-family: "Goudy Bookletter 1911", sans-serif;
   color: #333;
-  line-height: 1.5;
+  line-height: 2;
+  width: 100%;
+  gap: 5rem;
   height: 100vh;
   position: relative;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-flow: column;
+  align-items: stretch;
+  align-content: center;
+  justify-content: space-around;
+  padding-bottom: 10em;
   background: rgb(2,0,36);
   background: -moz-linear-gradient(335deg, rgba(2,0,36,1) 0%, rgba(236,204,228,1) 7%, rgba(0,212,255,1) 100%);
   background: -webkit-linear-gradient(335deg, rgba(2,0,36,1) 0%, rgba(236,204,228,1) 7%, rgba(0,212,255,1) 100%);
@@ -61,6 +66,57 @@ label {
   font-size: 2rem;
 }
 
+div {
+  border-color: red;
+}
+
+#header {
+  font-size: 6rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 0;
+  width: 100%;
+  flex-basis: auto;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  flex: initial;
+  height: auto;
+}
+
+.user-card {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 20em;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: azure
+}
+.user-card h3 {
+  font-size: 4rem;
+  margin: auto;
+  position: relative;
+  top: 0em;
+}
+
+.user-card p {
+  font-size: medium;
+  position: relative;
+  top: -2em;
+}
+
+.show-card {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  transition: 0.3s;
+  color: azure;
+  display: flex;
+  flex-flow: column;
+}
+
 h2 {
   text-align: center;
   font-size: 5rem;
@@ -76,6 +132,12 @@ h4 {
   margin-left: 0;
   margin-right: 0;
 }
+
+#show-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
 
 .hidden {
   display: none;
