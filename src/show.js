@@ -26,11 +26,11 @@ render() {
   this.element.innerHTML = `<div class="show-info">
   <h3>${this.venue} - ${this.city}</h3>
   <h4> Load In Date and Time: ${this.date} - ${this.loadin.getUTCHours()}:${this.loadin.getUTCMinutes()} </h4>
-  <ul>
+  <ul id="show-specifics">
   <li>Promoter: ${this.promoter} - ${this.email}</li>
   <li>Show Advanced: ${this.advanced ? 'yes' : 'no'}</li>
   </ul>
-  <ul id= "show-${this.id}-gross">
+  <ul class = "show-gross" id= "show-${this.id}-gross">
     <li>Merch Total: $${this.merch}</li>
     <li>Show Guarantee: $${this.guarantee}</li>
     <li class="show-totals">Total: $${this.merch + this.guarantee}</li>
