@@ -1,10 +1,11 @@
 class User {
   static all = []
 
-  constructor({name, email, id}){
+  constructor({name, email, id, shows}){
     this.name = name
     this.email = email
     this.id = id
+    this.shows = shows
     this.element = document.createElement('div');
     this.element.dataset["id"] = id
     this.element.className = "user-card"
