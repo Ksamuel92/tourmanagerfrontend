@@ -4,6 +4,7 @@ const userLoginFormDiv = document.querySelector('#login')
 const header = document.querySelector('#header')
 const headerDiv = document.querySelector('#header-section')
 const showInfo = document.querySelector('#shows-info')
+const newShowButton = document.querySelector('#new-show-button')
 const newShowFormDiv = document.querySelector('#new-show')
 const showCall = new ShowService(port);
 const userCall = new UserService(port);
@@ -29,6 +30,20 @@ showCall.getShows()
 userLoginForm.addEventListener('submit', handleUserLogin);
 newShowForm.addEventListener('submit', handleSubmit);
 
+function handleSubmit(e) {
+  e.preventDefault()
+  showCall.createShow();
+  newShowFormDiv.classList.add('hidden');
+  document.body.classList.remove('overlay')
+}
+
+
+
+// function handleNewShowForm(e){
+//   console.log(e)
+//   newShowFormDiv.classList.remove('hidden')
+// }
+
 function handleUserLogin(e) {
   e.preventDefault();
   userCall.createUser();
@@ -44,9 +59,8 @@ function handleUserLogin(e) {
 
 }
 
-
-function handleSubmit(e) {
-  e.preventDefault()
-  showCall.createShow();
-}
+// function handleSubmit(e) {
+//   e.preventDefault()
+//   showCall.createShow();
+// }
 
