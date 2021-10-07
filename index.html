@@ -26,16 +26,17 @@
       <input type="submit" value="Login" />
     </form>
   </div>
-  <button type="button" id="new-show-button" value= "New Show">New Show</button>
+
   <div id= "show-container" class= "hidden">
     <div id= "shows-info" class= "hidden">
-      <span id="shows-gross"></span><br><br>
+      <span id="shows-gross"></span>
     </div>
   </div>
  
-  <div id="new-show" class= "hidden">
+  <div id="new-show" class= "modal hidden">
+    <a id="new-form-close" class="close" data-dismiss="modal"></a>
     <form id= "new-show-form">
-      <h3>New Show</h3>
+      <h3 class="form-header">New Show</h3>
       <label for= "venue">Venue:</label>
       <input type="text" title="venue" id="show-venue">
       <label for="city">City:</label>
@@ -57,6 +58,7 @@
       <input type="submit" value = "Create Show">
   </form>
   </div>
+  
   </body>
 </html>
 <!-- Emo's - Austin, TX
