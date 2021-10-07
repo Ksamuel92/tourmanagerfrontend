@@ -13,7 +13,7 @@ class User {
 
   render() {
     this.element.innerHTML = `
-    <h3>Hello ${this.name}!</h3>
+    <h3>Hello ${this.name}!</h3></br>
     <p>Get started by creating your first show below!</p>
     `
     return this.element
