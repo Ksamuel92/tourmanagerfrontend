@@ -37,13 +37,16 @@ function handleShowClose(){
   newShowForm.reset()
   newShowFormDiv.classList.add('hidden')
   document.body.classList.remove('overlay')
+  document.querySelector('.user-card').style.backgroundColor = '#ffffff'
 }
 
 function handleSubmit(e) {
   e.preventDefault()
   showCall.createShow();
+  newShowForm.reset()
   newShowFormDiv.classList.add('hidden');
   document.body.classList.remove('overlay');
+  document.querySelector('.user-card').style.backgroundColor = '#ffffff'
 }
 
 
@@ -56,9 +59,12 @@ function handleSubmit(e) {
 function handleUserLogin(e) {
   e.preventDefault();
   userCall.createUser();
+  header.classList.add('header')
   header.classList.remove('hidden');
   showContainer.classList.remove('hidden');
   showInfo.classList.remove('hidden');
+  showGross.classList.add('shows-gross')
+  showGross.classList.remove('hidden')
   // newShowFormDiv.classList.remove('hidden');
   document.body.classList.remove('overlay');
 
