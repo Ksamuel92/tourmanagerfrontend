@@ -51,9 +51,10 @@ handleClick = e => {
     this.updateShowInfo(e.target)
   }
   else if (e.target.innerText === 'Delete'){
+    // debugger
     e.target.parentElement.remove()
+    Show.getGross()
     showCall.deleteShow(e);
-  } else if (e.target.innerText === 'Save Comment') {
 
   }
 }
@@ -131,9 +132,11 @@ attachToDom() {
 
 static getGross() {
   const showTotalsArray = Array.from(document.querySelectorAll('.show-totals'))
- const totalGross = showTotalsArray.map(show => Number(show.innerText.split(" ")[1].replace(/[^0-9.-]+/g,""))).reduce((previousTotal, currentTotal) => previousTotal + currentTotal)
-//  debugger
- return showGross.innerText = `Total Gross: $${totalGross}`
+  if (showTotalsArray.length === 0) {
+    return showGross.innerText = "Total Gross: $0"
+  } else {
+  const totalGross = showTotalsArray.map(show => Number(show.innerText.split(" ")[1].replace(/[^0-9.-]+/g,""))).reduce((previousTotal, currentTotal) => previousTotal + currentTotal)
+  return showGross.innerText = `Total Gross: $${totalGross}` }
 }
 
  static parseISOString(s) {
