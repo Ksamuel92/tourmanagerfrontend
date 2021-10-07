@@ -2,6 +2,7 @@ const port = 'http://localhost:3000';
 const userLoginForm = document.querySelector('#login-form')
 const userLoginFormDiv = document.querySelector('#login')
 const header = document.querySelector('#header')
+const headerDiv = document.querySelector('#header-section')
 const showInfo = document.querySelector('#shows-info')
 const newShowFormDiv = document.querySelector('#new-show')
 const showCall = new ShowService(port);
