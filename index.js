@@ -1,6 +1,9 @@
 const port = 'http://localhost:3000';
 const userLoginForm = document.querySelector('#login-form')
+const userLoginFormDiv = document.querySelector('#login')
 const header = document.querySelector('#header')
+const showInfo = document.querySelector('#shows-info')
+const newShowFormDiv = document.querySelector('#new-show')
 const showCall = new ShowService(port);
 const userCall = new UserService(port);
 let loggedInUserEmail = null;
@@ -27,8 +30,17 @@ newShowForm.addEventListener('submit', handleSubmit);
 
 function handleUserLogin(e) {
   e.preventDefault();
-  
   userCall.createUser();
+  header.classList.remove('hidden');
+  showContainer.classList.remove('hidden');
+  showInfo.classList.remove('hidden');
+  // newShowFormDiv.classList.remove('hidden');
+  document.body.classList.remove('overlay');
+
+  userLoginFormDiv.classList.add('hidden');
+  
+
+
 }
 
 
