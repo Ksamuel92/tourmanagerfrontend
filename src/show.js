@@ -51,6 +51,8 @@ handleClick = e => {
     this.updateShowInfo(e.target)
   }
   else if (e.target.innerText === 'Delete'){
+    e.target.parentElement.remove()
+    showCall.deleteShow(e);
   } else if (e.target.innerText === 'Save Comment') {
 
   }

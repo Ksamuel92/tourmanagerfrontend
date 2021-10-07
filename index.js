@@ -20,6 +20,7 @@ const guaranteeValue = document.querySelector('#show-guarantee')
 const advancedValue = document.querySelector('#show-advanced')
 
 
+
 showCall.getShows()
 userLoginForm.addEventListener('submit', handleUserLogin);
 newShowForm.addEventListener('submit', handleSubmit);

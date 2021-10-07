@@ -87,4 +87,19 @@ class ShowService {
   fetch(`${this.port}/shows/${id}`, configObj)
   .then(show.render())
   }
+
+  deleteShow(e) {
+    // debugger
+   const id = e.target.dataset.id
+
+   fetch(`${this.port}/shows/${id}`, {method: 'DELETE'})
+   .then(response => response.json())
+   .then(data => {
+     alert(data.message)
+    Show.getGross()
+    })
+
+  }
+
+
 }
