@@ -13,18 +13,16 @@ class User {
   }
 
   handleClick = e => {
-    debugger
     if (e.target.innerText === "New Show"){
       newShowFormDiv.classList.remove('hidden');
       document.body.classList.add('overlay')
-      
-    }
+      document.querySelector('.user-card').style.backgroundColor = 'transparent'
+     }
   }
 
   render() {
     this.element.innerHTML = `
     <h3>Hello ${this.name}!</h3></br>
-    <p>Get started by creating your first show below!</p>
     <button type="button" id="new-show-button" value= "New Show">New Show</button>
     `
     return this.element

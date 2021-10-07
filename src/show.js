@@ -123,6 +123,7 @@ updateShowInfo(editBtn) {
   this.venue = editVenueValue.value
   this.city = editCityValue.value
 
+
   showCall.updateShow(this)
 }
 
