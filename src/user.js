@@ -4,6 +4,7 @@ class User {
   constructor({name, email, id}){
     this.name = name
     this.email = email
+    this.id = id
     this.element = document.createElement('div');
     this.element.dataset["id"] = id
     this.element.className = "user-card"
