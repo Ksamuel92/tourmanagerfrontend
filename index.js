@@ -28,7 +28,7 @@ const advancedValue = document.querySelector('#show-advanced')
 
 
 
-showCall.getShows()
+// showCall.getShows()
 userLoginForm.addEventListener('submit', handleUserLogin);
 newShowForm.addEventListener('submit', handleSubmit);
 newShowFormCloseButton.addEventListener('click', handleShowClose);
