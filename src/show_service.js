@@ -85,7 +85,7 @@ class ShowService {
     body: JSON.stringify(editShowInfo)
   }
   fetch(`${this.port}/shows/${id}`, configObj)
-  .then(show.render())
+  .then(show.render(), Show.getGross())
   }
 
   deleteShow(e) {
