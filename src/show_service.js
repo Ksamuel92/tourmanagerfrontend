@@ -1,27 +1,31 @@
+/* eslint-disable no-undef */
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
 class ShowService {
   constructor(port) {
-    this.port = port
+    this.port = port;
   }
 
-   async fetchShows() {
+  async fetchShows() {
     try {
-      const response = await fetch(`${this.port}/shows`)
-      const shows = await response.json()
-      return shows
-      } catch (err) {
-        alert(err)
-      }
+      const response = await fetch(`${this.port}/shows`);
+      const shows = await response.json();
+      return shows;
+    } catch (err) {
+      alert(err)
     }
+  }
 
-    async getShows() {
-      const shows = await this.fetchShows()
-      for(let show of shows){
-        let s = new Show(show)
-        s.render()
-        s.attachToDom()
+  async getShows() {
+    const shows = await this.fetchShows()
+    for (let show of shows){
+      let s = new Show(show)
+      s.render()
+      s.attachToDom()
       }
-      Show.getGross() 
-    }
+    Show.getGross() 
+  }
 
   async postShow() {
     const showInfo = {
@@ -56,17 +60,28 @@ class ShowService {
       alert(err)
     }
   }
-    async createShow() {
-    const show = await this.postShow()
-      let s = new Show(show);
-      s.render();
-      s.attachToDom();
-      Show.getGross();
-    }
 
-   async updateShow(show) {
-    const {advanced, email, guarantee, loadin, merch, promoter, venue, city, date, id} = show
-    
+  async createShow() {
+    const show = await this.postShow();
+    const s = new Show(show);
+    s.render();
+    s.attachToDom();
+    Show.getGross();
+  }
+
+  async updateShow(show) {
+    const {
+      advanced,
+      email,
+      guarantee,
+      loadin,
+      merch,
+      promoter,
+      venue,
+      city,
+      date,
+      id,
+    } = show;
 
     const editShowInfo = {
       show: {
@@ -79,41 +94,46 @@ class ShowService {
         promoter,
         venue,
         city,
-        date
+        date,
       },
       user: {
-        email: loggedInUserEmail
-      }
-  }
-  const configObj = {
-    method: 'PATCH',
-    headers: {
-      'content-type':'application/json',
-      accept: 'application/json'
-    },
-    body: JSON.stringify(editShowInfo)
-  }
-  try {
-    const response = await fetch(`${this.port}/shows/${id}`, configObj)
-    if (!response.ok) throw new Error(response.message)
-    show.render() 
-    Show.getGross()
-  } catch (err) {
-    alert(err)
-  }
-}
+        email: loggedInUserEmail,
+      },
+    };
 
+    const configObj = {
+      method: 'PATCH',
+      headers: {
+        'content-type':'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify(editShowInfo),
+    };
+    try {
+      const response = await fetch(
+        `${this.port}/shows/${id}`,
+        configObj,
+      );
+      if (!response.ok) throw new Error(response.message);
+      show.render();
+      Show.getGross();
+    } catch (err) {
+      alert(err);
+    }
+  }
 
   async deleteShow(e) {
-   const id = e.target.dataset.id
-   try {
-   const response = await fetch(`${this.port}/shows/${id}`, {method: 'DELETE'})
-   debugger
-   const deletedShow = await response.json()
-   alert(deletedShow.message)
-   Show.getGross()
-  } catch (err) {
-    alert(err)
-  }
+    const { id } = e.target.dataset.id;
+    try {
+      const response = await fetch(`${this.port}/shows/${id}`, {
+        method: 'DELETE',
+      });
+      const deletedShow = await response.json();
+      // eslint-disable-next-line no-undef
+      alert(deletedShow.message);
+      Show.getGross();
+    } catch (err) {
+      alert(err);
+    }
   }
 }
