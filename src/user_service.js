@@ -26,18 +26,18 @@ class UserService {
       const user = await response.json();
       return user;
     } catch (err) {
-      alert(err)
+      alert(err);
     }
   }
 
   async createUser() {
     const user = await this.fetchUser();
-    let u = new User(user);
-    u.render()
-    u.attachToDom()
+    const u = new User(user);
+    u.render();
+    u.attachToDom();
     const shows = user.shows.map((show) => new Show(show));
     for (let i = 0; i < shows.length; i += 1) {
-      shows[i].render()
+      shows[i].render();
       shows[i].attachToDom();
     }
     loggedInUserEmail = u.email;
