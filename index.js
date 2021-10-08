@@ -50,12 +50,6 @@ function handleSubmit(e) {
 }
 
 
-
-// function handleNewShowForm(e){
-//   console.log(e)
-//   newShowFormDiv.classList.remove('hidden')
-// }
-
 function handleUserLogin(e) {
   e.preventDefault();
   userCall.createUser();
@@ -65,17 +59,6 @@ function handleUserLogin(e) {
   showInfo.classList.remove('hidden');
   showGross.classList.add('shows-gross')
   showGross.classList.remove('hidden')
-  // newShowFormDiv.classList.remove('hidden');
   document.body.classList.remove('overlay');
-
   userLoginFormDiv.classList.add('hidden');
-  
-
-
-}
-
-// function handleSubmit(e) {
-//   e.preventDefault()
-//   showCall.createShow();
-// }
-
+  }
