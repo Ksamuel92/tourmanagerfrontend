@@ -18,25 +18,8 @@ body {
   height: 100vh;
   position: relative;
   display: block;    
-padding-bottom: 10em;
+  padding-bottom: 10em;
   background: rgb(221, 221, 230);
-
-  
-}
-
-.hidden {
-  display: none !important;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  backdrop-filter: blur(3px);
-  z-index: 5;
-
 }
 
 
@@ -82,10 +65,10 @@ div {
 
 #header-section{
   display: block;
-     margin: auto;
-    width: 100%;
-    position: relative;
-    top: 7em;
+  margin: auto;
+  width: 100%;
+  position: relative;
+  top: 7em;
 }
 
 .header {
@@ -131,17 +114,17 @@ div {
 
 .show-card {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    transition: 0.3s;
-    background-color: cornsilk;
-    display: flex;
-    position: relative;
-    top: 0em;
-    padding: 0px 13em;
-    margin: 4em 0em 0em;
-    flex-flow: column;
-    border-radius: 30px;
-    justify-content: center;
-    align-items: center;
+  transition: 0.3s;
+  background-color: cornsilk;
+  display: flex;
+  position: relative;
+  top: 0em;
+  padding: 0px 13em;
+  margin: 4em 0em 0em;
+  flex-flow: column;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .show-card:hover {
@@ -166,9 +149,9 @@ div {
 
 .show-info {
   display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: normal;
+  flex-flow: column;
+  justify-content: center;
+  align-items: normal;
 }
 
 .show-info h4 {
@@ -182,7 +165,7 @@ div {
 
 #show-specifics {
   list-style: none;
-    padding-left: 0;
+  padding-left: 0;
 }
 
 #show-specifics li {
@@ -204,12 +187,20 @@ div {
 
 .show-gross {
   list-style:none;
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .show-gross {
   padding: 10px;
   font-size: large;
+}
+.modal-footer {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: space-between;
+width: 30%;
 }
 
 h2 {
@@ -251,20 +242,20 @@ h4 {
 }
 
 
-#new-show-button{
+#new-show-button {
   font-size: 2rem;
-    display: block;
-    margin: auto;
-    width: 15%;
-    background-color: rgb(76, 130, 174);
-    color: white;
-    padding: 14px 20px;
-    position: relative;
-    top: -1em;
-    text-align: center;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  display: block;
+  margin: auto;
+  width: 15%;
+  background-color: rgb(76, 130, 174);
+  color: white;
+  padding: 14px 20px;
+  position: relative;
+  top: -1em;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 #new-show-form{
@@ -278,7 +269,7 @@ h4 {
 
 .edit-btn {
   font-size: 2rem;
-    width: 15%;
+    width: 47%;
     background-color: rgb(76, 130, 174);
     color: white;
     padding: 14px 20px;
@@ -289,7 +280,7 @@ h4 {
 }
 .delete-btn {
   font-size: 2rem;
-  width: 15%;
+  width: 48%;
   background-color: hsl(0, 66%, 29%);
   color: white;
   padding: 14px 20px;
@@ -332,10 +323,9 @@ h4 {
   font-weight: lighter;
 }
 
-
-/* .hidden {
-  display: none;
-} */
+.hidden {
+  display: none !important;
+}
 
 .modal {
   position: absolute;
