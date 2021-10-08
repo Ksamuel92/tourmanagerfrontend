@@ -36,8 +36,10 @@ render() {
     <li class="show-totals">Total: $${this.merch + this.guarantee}</li>
   </ul>
   </div>
+  <div class="modal-footer">
   <button type="button" class="edit-btn" data-id ="${this.id}">Edit</button>
   <button type="button" class="delete-btn" data-id ="${this.id}">Delete</button>
+  </div>
   `
   return this.element
 }
@@ -100,8 +102,8 @@ return this.element
 }
 
 updateShowInfo(editBtn) {
-  const div = editBtn.previousElementSibling
-  // debugger
+  const div = editBtn.parentNode.previousElementSibling
+  debugger
   
   const editVenueValue = div.querySelector('#edit-venue')
   const editCityValue = div.querySelector('#edit-city')
