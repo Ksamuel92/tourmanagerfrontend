@@ -13,18 +13,18 @@ class ShowService {
       const shows = await response.json();
       return shows;
     } catch (err) {
-      alert(err)
+      alert(err);
     }
   }
 
   async getShows() {
-    const shows = await this.fetchShows()
-    for (let show of shows){
-      let s = new Show(show)
-      s.render()
-      s.attachToDom()
-      }
-    Show.getGross() 
+    const shows = await this.fetchShows();
+    for (const show of shows) {
+      const s = new Show(show);
+      s.render();
+      s.attachToDom();
+    }
+    Show.getGross();
   }
 
   async postShow() {
@@ -38,26 +38,26 @@ class ShowService {
         promoter: promoterValue.value,
         venue: venueValue.value,
         city: cityValue.value,
-        date: dateValue.value
+        date: dateValue.value,
       },
       user: {
         email: loggedInUserEmail,
-      }
-    }
+      },
+    };
     const configObj = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        accept: 'application/json'
+        accept: 'application/json',
       },
-      body: JSON.stringify(showInfo)
-    }
+      body: JSON.stringify(showInfo),
+    };
     try {
-      const response = await fetch(`${this.port}/shows`, configObj)
-      const show = await response.json()
-      return show
+      const response = await fetch(`${this.port}/shows`, configObj);
+      const show = await response.json();
+      return show;
     } catch (err) {
-      alert(err)
+      alert(err);
     }
   }
 
@@ -104,7 +104,7 @@ class ShowService {
     const configObj = {
       method: 'PATCH',
       headers: {
-        'content-type':'application/json',
+        'content-type': 'application/json',
         accept: 'application/json',
       },
       body: JSON.stringify(editShowInfo),
@@ -123,7 +123,7 @@ class ShowService {
   }
 
   async deleteShow(e) {
-    const { id } = e.target.dataset.id;
+    const id = e.target.dataset.id;
     try {
       const response = await fetch(`${this.port}/shows/${id}`, {
         method: 'DELETE',
