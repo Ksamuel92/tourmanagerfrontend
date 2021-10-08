@@ -53,8 +53,8 @@ handleClick = e => {
     this.updateShowInfo(e.target)
   }
   else if (e.target.innerText === 'Delete'){
-    // debugger
-    e.target.parentElement.remove()
+    
+    e.target.parentElement.parentElement.remove()
     Show.getGross()
     showCall.deleteShow(e);
 
