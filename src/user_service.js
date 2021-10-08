@@ -1,45 +1,46 @@
+/* eslint-disable no-undef */
 class UserService {
   constructor(port) {
-    this.port = port
+    this.port = port;
   }
 
   async fetchUser() {
     const userInfo = {
       user: {
-       name: userNameValue.value,
-       email: userEmailValue.value
-      }
-    }
+        name: userNameValue.value,
+        email: userEmailValue.value,
+      },
+    };
 
     const configObj = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        accept: 'application/json'
+        accept: 'application/json',
       },
-      body: JSON.stringify(userInfo)
-    }
-    
+      body: JSON.stringify(userInfo),
+    };
+
     try {
-    const response = await fetch(`${this.port}/users`, configObj)
-    const user = await response.json()
-    return user
+      const response = await fetch(`${this.port}/users`, configObj);
+      const user = await response.json();
+      return user;
     } catch (err) {
       alert(err)
     }
   }
-    
-    async createUser() {
-    const user = await this.fetchUser()
-    let u = new User(user)
+
+  async createUser() {
+    const user = await this.fetchUser();
+    let u = new User(user);
     u.render()
     u.attachToDom()
-    let shows = user.shows.map(show => new Show(show))
-    for (let i = 0; i < shows.length; i++) {
+    const shows = user.shows.map((show) => new Show(show));
+    for (let i = 0; i < shows.length; i += 1) {
       shows[i].render()
-      shows[i].attachToDom()  
+      shows[i].attachToDom();
     }
-      loggedInUserEmail = u.email
-      userLoginForm.classList.add('hidden');
-    }
+    loggedInUserEmail = u.email;
+    userLoginForm.classList.add('hidden');
   }
+}
