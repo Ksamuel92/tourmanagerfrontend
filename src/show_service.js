@@ -3,20 +3,27 @@ class ShowService {
     this.port = port
   }
 
-   getShows() {
-    fetch(`${this.port}/shows`)
-    .then(shows => shows.json())
-    .then(data => {
-      for(let show of data){
+   async fetchShows() {
+    try {
+      const response = await fetch(`${this.port}/shows`)
+      const shows = await response.json()
+      return shows
+      } catch (err) {
+        alert(err)
+      }
+    }
+
+    async getShows() {
+      const shows = await this.fetchShows()
+      for(let show of shows){
         let s = new Show(show)
         s.render()
         s.attachToDom()
       }
       Show.getGross() 
-    })
-  }
+    }
 
-  createShow() {
+  async postShow() {
     const showInfo = {
       show: {
         advanced: advancedValue.value,
@@ -41,20 +48,23 @@ class ShowService {
       },
       body: JSON.stringify(showInfo)
     }
-
-    fetch(`${this.port}/shows`, configObj)
-    .then(response => response.json())
-    .then(show => {
+    try {
+      const response = await fetch(`${this.port}/shows`, configObj)
+      const show = await response.json()
+      return show
+    } catch (err) {
+      alert(err)
+    }
+  }
+    async createShow() {
+    const show = await this.postShow()
       let s = new Show(show);
       s.render();
       s.attachToDom();
       Show.getGross();
-    } );
-    
-  }
+    }
 
-  updateShow(show) {
-
+   async updateShow(show) {
     const {advanced, email, guarantee, loadin, merch, promoter, venue, city, date, id} = show
     
 
@@ -75,7 +85,6 @@ class ShowService {
         email: loggedInUserEmail
       }
   }
-  // debugger
   const configObj = {
     method: 'PATCH',
     headers: {
@@ -84,22 +93,27 @@ class ShowService {
     },
     body: JSON.stringify(editShowInfo)
   }
-  fetch(`${this.port}/shows/${id}`, configObj)
-  .then(show.render(), Show.getGross())
-  }
-
-  deleteShow(e) {
-    // debugger
-   const id = e.target.dataset.id
-
-   fetch(`${this.port}/shows/${id}`, {method: 'DELETE'})
-   .then(response => response.json())
-   .then(data => {
-     alert(data.message)
+  try {
+    const response = await fetch(`${this.port}/shows/${id}`, configObj)
+    if (!response.ok) throw new Error(response.message)
+    show.render() 
     Show.getGross()
-    })
-
+  } catch (err) {
+    alert(err)
   }
+}
 
 
+  async deleteShow(e) {
+   const id = e.target.dataset.id
+   try {
+   const response = await fetch(`${this.port}/shows/${id}`, {method: 'DELETE'})
+   debugger
+   const deletedShow = await response.json()
+   alert(deletedShow.message)
+   Show.getGross()
+  } catch (err) {
+    alert(err)
+  }
+  }
 }
