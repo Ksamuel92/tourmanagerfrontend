@@ -18,11 +18,11 @@ constructor({advanced, date, email, guarantee, id, loadin, merch, promoter, user
   this.element.id = `show-${this.id}`
   this.element.addEventListener('click', this.handleClick)
   Show.all.push(this) 
-  // debugger
+
 }
 
 render() {
-  // debugger
+
   this.element.innerHTML = `<div class="show-info">
   <h3>${this.venue} - ${this.city}</h3>
   <h4> Load In Date and Time: ${this.date} - ${this.loadin.getUTCHours()}:${this.loadin.getUTCMinutes()} </h4>
@@ -72,7 +72,6 @@ let merch = div.children[3].children[0].innerText.split('Merch Total: $')[1]
 let showDate = div.children[1].innerText.split(' - ')[0].split('Load In Date and Time: ')[1]
 let guarantee = div.children[3].children[1].innerText.split('Show Guarantee: $')[1]
 let advanced = div.children[2].children[1].innerText.split('Show Advanced: ')[1]
-// debugger
 div.innerHTML = `
 <div class=edit-show-card>
 <form data-set:"${this.id}"id= "edit-show-form">
@@ -103,8 +102,7 @@ return this.element
 
 updateShowInfo(editBtn) {
   const div = editBtn.parentNode.previousElementSibling
-  debugger
-  
+
   const editVenueValue = div.querySelector('#edit-venue')
   const editCityValue = div.querySelector('#edit-city')
   const editPromoterValue = div.querySelector('#edit-promoter')
@@ -125,7 +123,6 @@ updateShowInfo(editBtn) {
   this.venue = editVenueValue.value
   this.city = editCityValue.value
 
-
   showCall.updateShow(this)
 }
 
@@ -141,11 +138,4 @@ static getGross() {
   const totalGross = showTotalsArray.map(show => Number(show.innerText.split(" ")[1].replace(/[^0-9.-]+/g,""))).reduce((previousTotal, currentTotal) => previousTotal + currentTotal)
   return showGross.innerText = `Total Gross: $${totalGross}` }
 }
-
- static parseISOString(s) {
-  var b = s.split(/\D+/);
-  return `${b[3]}:${b[4]}`
-}
-
-
 }
