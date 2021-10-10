@@ -42,5 +42,6 @@ class UserService {
     }
     loggedInUserEmail = u.email;
     userLoginForm.classList.add('hidden');
+    Show.getGross();
   }
 }
