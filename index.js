@@ -62,6 +62,16 @@ const handleShowClose = (e) => {
     '#ffffff';
 };
 
+const handleKeyDown = (e) => {
+  if (
+    e.key === 'Escape' &&
+    !newShowFormDiv.classList.contains('hidden')
+  ) {
+    handleShowClose(e);
+  }
+};
+
 userLoginForm.addEventListener('submit', handleUserLogin);
 newShowForm.addEventListener('submit', handleSubmit);
+document.addEventListener('keydown', handleKeyDown);
 newShowFormCloseButton.addEventListener('click', handleShowClose);
