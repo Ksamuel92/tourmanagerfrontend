@@ -22,7 +22,7 @@
       <label for="name">Name:</label>
       <input type="text" id="user-name">
       <label for ="email">Email:</label>
-      <input type="email" id="user-email" />
+      <input type="email" id="user-email" required="required" />
       <input type="submit" value="Login" />
     </form>
   </div>
@@ -51,10 +51,10 @@
       <input type="time" title="loadin" id="show-loadin">
       <label for="advanced">Advanced?</label>
       <input type="checkbox" title="advanced" id="show-advanced">
-      <label for="merch">Merch Total:</label>
-      <input type="number" title="merch" id="show-merch">
-      <label for="guarantee">Show Guarantee:</label>
-      <input type="number" title="guarantee" id="show-guarantee">
+      <label for="merch">Merch Total (in USD):</label>
+      <input type="number" title="merch" id="show-merch" min="0">
+      <label for="guarantee">Show Guarantee (in USD):</label>
+      <input type="number" title="guarantee" id="show-guarantee" min="0">
       <input type="submit" value = "Create Show">
   </form>
   </div>
