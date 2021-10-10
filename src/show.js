@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 class Show {
   static all = [];
 
@@ -14,17 +15,17 @@ class Show {
     venue,
     city,
   }) {
-    this.advanced = advanced; 
+    this.advanced = advanced;
     this.email = email;
-    this.date = date; 
-    this.guarantee = guarantee; 
-    this.id = id; 
-    this.loadin = new Date(loadin); 
+    this.date = date;
+    this.guarantee = guarantee;
+    this.id = id;
+    this.loadin = new Date(loadin);
     this.merch = merch;
-    this.promoter = promoter; 
+    this.promoter = promoter;
     this.user = user;
-    this.venue = venue; 
-    this.city = city; 
+    this.venue = venue;
+    this.city = city;
     this.element = document.createElement('div');
     this.element.dataset.id = id;
     this.element.className = 'show-card';
@@ -118,10 +119,10 @@ class Show {
 <input type="date" title="date" id="edit-date" value="${showDate}">
 <label for>Load In Time:</label>
 <input type="time" title="loadin" id="edit-loadin" value="${loadin}"><br>
-<label for="advanced">Advanced?</label>
 <input type="checkbox" title="advanced" id="edit-advanced" ${
       advanced === 'yes' ? 'checked' : 'unchecked'
-    }></br>
+    }>
+<label for="advanced">Advanced?</label></br>
 <label for="merch">Merch Total:</label>
 <input type="number" title="merch" id="edit-merch" value = "${merch}"></br>
 <label for="guarantee">Show Guarantee:</label>
