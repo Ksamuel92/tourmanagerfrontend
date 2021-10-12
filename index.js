@@ -45,7 +45,7 @@ const handleUserLogin = (e) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  showCall.createShow();
+  showCall.postShow();
   newShowForm.reset();
   newShowFormDiv.classList.add('hidden');
   document.body.classList.remove('overlay');
