@@ -7,25 +7,33 @@ class ShowService {
     this.port = port;
   }
 
-  async fetchShows() {
-    try {
-      const response = await fetch(`${this.port}/shows`);
-      const shows = await response.json();
-      return shows;
-    } catch (err) {
-      alert(err);
-    }
+  async fetchShowsJSON(
+    resourceURL,
+    configObj = {},
+    errorMsg = 'Something went wrong.',
+  ) {
+    const response = await fetch(
+      `${this.port}${resourceURL}`,
+      configObj,
+    );
+    if (!response.ok)
+      throw new Error(`${errorMsg} (${response.status})`);
+    return response.json();
   }
-
-  async getShows() {
-    const shows = await this.fetchShows();
-    for (const show of shows) {
-      const s = new Show(show);
-      s.render();
-      s.attachToDom();
-    }
-    Show.getGross();
-  }
+  // No getShows() call in code
+  //
+  // async getShows() {
+  //   const shows = await this.fetchShowsJSON(
+  //     '/shows',
+  //     'Could not fetch shows from server! Try again.',
+  //   );
+  //   shows.map((show) => {
+  //     const showObject = new Show(show);
+  //     showObject.render();
+  //     showObject.attachToDom();
+  //   });
+  //   Show.getGross();
+  // }
 
   async postShow() {
     const showInfo = {
@@ -44,6 +52,7 @@ class ShowService {
         email: loggedInUserEmail,
       },
     };
+
     const configObj = {
       method: 'POST',
       headers: {
@@ -52,21 +61,20 @@ class ShowService {
       },
       body: JSON.stringify(showInfo),
     };
+
     try {
-      const response = await fetch(`${this.port}/shows`, configObj);
-      const show = await response.json();
-      return show;
+      const show = await this.fetchShowsJSON(
+        '/shows',
+        configObj,
+        'Could not post show to server. Try again!',
+      );
+      const showObject = new Show(show);
+      showObject.render();
+      showObject.attachToDom();
+      Show.getGross();
     } catch (err) {
       alert(err);
     }
-  }
-
-  async createShow() {
-    const show = await this.postShow();
-    const s = new Show(show);
-    s.render();
-    s.attachToDom();
-    Show.getGross();
   }
 
   async updateShow(show) {
@@ -110,11 +118,11 @@ class ShowService {
       body: JSON.stringify(editShowInfo),
     };
     try {
-      const response = await fetch(
-        `${this.port}/shows/${id}`,
+      const response = await this.fetchShowsJSON(
+        `/shows/${id}`,
         configObj,
+        "Couldn't update show. Try again!",
       );
-      if (!response.ok) throw new Error(response.message);
       show.render();
       Show.getGross();
     } catch (err) {
@@ -123,7 +131,7 @@ class ShowService {
   }
 
   async deleteShow(e) {
-    const id = e.target.dataset.id;
+    const { id } = e.target.dataset;
     try {
       const response = await fetch(`${this.port}/shows/${id}`, {
         method: 'DELETE',
