@@ -4,7 +4,7 @@ class UserService {
     this.port = port;
   }
 
-  async fetchUser() {
+  async fetchUserJSON() {
     const userInfo = {
       user: {
         name: userNameValue.value,
@@ -26,22 +26,27 @@ class UserService {
       const user = await response.json();
       return user;
     } catch (err) {
-      alert(err);
+      alert(err.message);
     }
   }
 
   async createUser() {
-    const user = await this.fetchUser();
-    const u = new User(user);
-    u.render();
-    u.attachToDom();
-    const shows = user.shows.map((show) => new Show(show));
-    for (let i = 0; i < shows.length; i += 1) {
-      shows[i].render();
-      shows[i].attachToDom();
+    const user = await this.fetchUserJSON();
+    try {
+      const userObject = new User(user);
+      userObject.render();
+      userObject.attachToDom();
+      user.shows.map((show) => {
+        const showObject = new Show(show);
+        showObject.render();
+        showObject.attachToDom();
+      });
+
+      loggedInUserEmail = userObject.email;
+      userLoginForm.classList.add('hidden');
+      Show.getGross();
+    } catch (err) {
+      alert(err.message);
     }
-    loggedInUserEmail = u.email;
-    userLoginForm.classList.add('hidden');
-    Show.getGross();
   }
 }
