@@ -149,7 +149,7 @@ class Show {
     this.advanced = editAdvancedValue.value;
     this.email = editEmailValue.value;
     this.date = editDateValue.value;
-    this.guarantee = Number(editGuaranteeValue.value); 
+    this.guarantee = Number(editGuaranteeValue.value);
     this.loadin = new Date(
       1,
       1,
@@ -158,7 +158,7 @@ class Show {
       splitTime[1],
     );
     this.merch = Number(editMerchValue.value);
-    this.promoter = editPromoterValue.value; 
+    this.promoter = editPromoterValue.value;
     this.venue = editVenueValue.value;
     this.city = editCityValue.value;
 
