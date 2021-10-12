@@ -118,7 +118,7 @@ class ShowService {
       body: JSON.stringify(editShowInfo),
     };
     try {
-      const response = await this.fetchShowsJSON(
+      const showData = await this.fetchShowsJSON(
         `/shows/${id}`,
         configObj,
         "Couldn't update show. Try again!",
@@ -133,10 +133,11 @@ class ShowService {
   async deleteShow(e) {
     const { id } = e.target.dataset;
     try {
-      const response = await fetch(`${this.port}/shows/${id}`, {
-        method: 'DELETE',
-      });
-      const deletedShow = await response.json();
+      const deletedShow = await this.fetchShowsJSON(
+        `/shows/${id}`,
+        { method: 'DELETE' },
+        "Couldn't delete show. Try again!",
+      );
       // eslint-disable-next-line no-undef
       alert(deletedShow.message);
       Show.getGross();
