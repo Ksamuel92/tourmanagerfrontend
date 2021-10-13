@@ -35,18 +35,18 @@ class ShowService {
   //   Show.getGross();
   // }
 
-  async postShow() {
+  async postShow(form) {
     const showInfo = {
       show: {
-        advanced: advancedValue.value,
-        email: emailValue.value,
-        guarantee: guaranteeValue.value,
-        loadin: loadinValue.value,
-        merch: merchValue.value,
-        promoter: promoterValue.value,
-        venue: venueValue.value,
-        city: cityValue.value,
-        date: dateValue.value,
+        advanced: form.advanced.value,
+        email: form.email.value,
+        guarantee: form.guarantee.value,
+        loadin: form.loadin.value,
+        merch: form.merch.value,
+        promoter: form.promoter.value,
+        venue: form.venue.value,
+        city: form.city.value,
+        date: form.date.value,
       },
       user: {
         email: loggedInUserEmail,
@@ -78,6 +78,7 @@ class ShowService {
   }
 
   async updateShow(show) {
+    debugger
     const {
       advanced,
       email,
@@ -93,7 +94,6 @@ class ShowService {
 
     const editShowInfo = {
       show: {
-        id,
         advanced,
         email,
         guarantee,
@@ -130,11 +130,10 @@ class ShowService {
     }
   }
 
-  async deleteShow(e) {
-    const { id } = e.target.dataset;
+  async deleteShow(show) {
     try {
       const deletedShow = await this.fetchShowsJSON(
-        `/shows/${id}`,
+        `/shows/${show.id}`,
         { method: 'DELETE' },
         "Couldn't delete show. Try again!",
       );
@@ -145,4 +144,37 @@ class ShowService {
       alert(err);
     }
   }
+
+  async trashShow(show) {
+    // debugger
+    const showInfo = {
+      show: {
+        merch: 0,
+        guarantee: 0,
+      },
+    };
+    const configObj = {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify(showInfo),
+    };
+    try {
+      const showData = await this.fetchShowsJSON(
+        `/shows/${show.id}`,
+        configObj,
+        "Couldn't update show. Try again!",
+      );
+      //TODO: figure out how to render 0 in real time
+      show.render()
+    } catch (err) {
+      alert(err);
+    }
+  
+    show.render();
+    Show.getGross();
+  }
 }
+
