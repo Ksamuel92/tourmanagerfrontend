@@ -4,11 +4,11 @@ class UserService {
     this.port = port;
   }
 
-  async fetchUserJSON() {
+  async fetchUserJSON(form) {
     const userInfo = {
       user: {
-        name: userNameValue.value,
-        email: userEmailValue.value,
+        name: form.name.value,
+        email: form.email.value,
       },
     };
 
@@ -30,8 +30,8 @@ class UserService {
     }
   }
 
-  async createUser() {
-    const user = await this.fetchUserJSON();
+  async createUser(form) {
+    const user = await this.fetchUserJSON(form);
     try {
       const userObject = new User(user);
       userObject.render();
@@ -43,7 +43,7 @@ class UserService {
       });
 
       loggedInUserEmail = userObject.email;
-      userLoginForm.classList.add('hidden');
+      dom.userLoginForm.classList.add('hidden');
       Show.getGross();
     } catch (err) {
       alert(err.message);

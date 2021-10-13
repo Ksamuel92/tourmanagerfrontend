@@ -17,9 +17,9 @@ class User {
 
   handleClick = (e) => {
     if (e.target.innerText === 'New Show') {
-      newShowFormDiv.classList.remove('hidden');
+      dom.newShowFormDiv.classList.remove('hidden');
       document.body.classList.add('overlay');
-      document.querySelector('.user-card').style.backgroundColor =
+      dom.userCard.style.backgroundColor =
         'transparent';
     }
   };
@@ -33,6 +33,6 @@ class User {
   }
 
   attachToDom() {
-    headerDiv.appendChild(this.element);
+    dom.headerDiv.appendChild(this.element);
   }
 }
