@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script defer src="src/show_service.js"></script>
     <script defer src="src/user_service.js"></script>
+    <script defer src="src/dom_service.js"></script>
     <script defer src="src/show.js"></script>
     <script defer src="src/user.js"></script>
     <script defer src="index.js"></script>
@@ -20,9 +21,9 @@
     <form id = "login-form">
       <h2>TourManager</h2>
       <label for="name">Name:</label>
-      <input type="text" id="user-name">
+      <input type="text" name="name" id="user-name">
       <label for ="email">Email:</label>
-      <input type="email" id="user-email" required="required" />
+      <input type="email" name="email"id="user-email" required="required" />
       <input type="submit" value="Login" />
     </form>
   </div>
@@ -38,23 +39,23 @@
     <form id= "new-show-form">
       <h3 class="form-header">New Show</h3>
       <label for= "venue">Venue:</label>
-      <input type="text" title="venue" id="show-venue">
+      <input type="text" name = "venue" title="venue" id="show-venue">
       <label for="city">City:</label>
-      <input type="text" title="city" id="show-city" placeholder="City, State">
+      <input type="text" name = "city" title="city" id="show-city" placeholder="City, State">
       <label for="promoter">Promoter:</label>
-      <input type="text" title="promoter" id="show-promoter">
+      <input type="text" name = "promoter" title="promoter" id="show-promoter">
       <label for="email">Promoter's Email:</label>
-      <input type="email" title="email" id="show-email"> 
+      <input type="email"name = "email"  title="email" id="show-email"> 
       <label for="date">Show Date:</label>
-      <input type="date" title="date" id="show-date">
+      <input type="date"name = "date"  title="date" id="show-date">
       <label for="loadin">Load In Time:</label>
-      <input type="time" title="loadin" id="show-loadin">
+      <input type="time"name = "loadin"  title="loadin" id="show-loadin">
       <label for="advanced">Advanced?</label>
-      <input type="checkbox" title="advanced" id="show-advanced">
+      <input type="checkbox" name = "advanced" title="advanced" id="show-advanced">
       <label for="merch">Merch Total (in USD):</label>
-      <input type="number" title="merch" id="show-merch" min="0">
+      <input type="number" name = "merch"  title="merch" id="show-merch" min="0">
       <label for="guarantee">Show Guarantee (in USD):</label>
-      <input type="number" title="guarantee" id="show-guarantee" min="0">
+      <input type="number" name = "guarantee"  title="guarantee" id="show-guarantee" min="0">
       <input type="submit" value = "Create Show">
   </form>
   </div>
